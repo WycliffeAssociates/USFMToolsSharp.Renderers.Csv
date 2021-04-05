@@ -15,7 +15,7 @@ namespace USFMToolsSharp.Renderers.Csv
         /// </summary>
         /// <param name="document">The document to render</param>
         /// <param name="stream">A stream to write the resulting CSV to</param>
-        public void RenderCSV(USFMDocument document, Stream stream)
+        public void Render(USFMDocument document, Stream stream)
         {
             using (var writer = new StreamWriter(stream))
             {
@@ -71,7 +71,7 @@ namespace USFMToolsSharp.Renderers.Csv
         /// </summary>
         /// <param name="documents">The documents to render</param>
         /// <param name="stream">A stream to write the resulting CSV to</param>
-        public void RenderCSV(IEnumerable<USFMDocument> documents, Stream stream)
+        public void Render(IEnumerable<USFMDocument> documents, Stream stream)
         {
             using (var writer = new StreamWriter(stream))
             {
