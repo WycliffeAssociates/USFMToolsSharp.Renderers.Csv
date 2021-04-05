@@ -10,6 +10,11 @@ namespace USFMToolsSharp.Renderers.Csv
 {
     public class CsvRenderer
     {
+        /// <summary>
+        /// Render a USFMDocument to a CSV
+        /// </summary>
+        /// <param name="document">The document to render</param>
+        /// <param name="stream">A stream to write the resulting CSV to</param>
         public void RenderCSV(USFMDocument document, Stream stream)
         {
             using (var writer = new StreamWriter(stream))
@@ -22,6 +27,10 @@ namespace USFMToolsSharp.Renderers.Csv
             }
         }
 
+        /// <summary>
+        /// Write headers to a csv file
+        /// </summary>
+        /// <param name="csv">The CSV writer to write the headers to</param>
         private static void WriteHeader(CsvWriter csv)
         {
             csv.WriteField("Book");
@@ -31,6 +40,11 @@ namespace USFMToolsSharp.Renderers.Csv
             csv.NextRecord();
         }
 
+        /// <summary>
+        /// Write the contents of the usfm document to a CSV
+        /// </summary>
+        /// <param name="document">The document whose contents to write</param>
+        /// <param name="csv">The CSV writer to write the content to</param>
         private static void WriteContent(USFMDocument document, CsvWriter csv)
         {
             var book = document.GetChildMarkers<TOC3Marker>().First().BookAbbreviation;
@@ -52,6 +66,11 @@ namespace USFMToolsSharp.Renderers.Csv
             }
         }
 
+        /// <summary>
+        /// Render multiple USFMDocument to a CSV
+        /// </summary>
+        /// <param name="documents">The documents to render</param>
+        /// <param name="stream">A stream to write the resulting CSV to</param>
         public void RenderCSV(IEnumerable<USFMDocument> documents, Stream stream)
         {
             using (var writer = new StreamWriter(stream))
